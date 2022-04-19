@@ -6,6 +6,6 @@ class LoginPage extends MaterialPage {
   const LoginPage()
       : super(
           child: const LoginWidget(),
-          key: const ValueKey(PageKey.loginPage),
+          key: const ValueKey(PageKey.login),
         );
 }

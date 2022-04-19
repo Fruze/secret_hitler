@@ -6,6 +6,6 @@ class RegisterPage extends MaterialPage {
   const RegisterPage()
       : super(
           child: const RegisterWidget(),
-          key: const ValueKey(PageKey.registerPage),
+          key: const ValueKey(PageKey.register),
         );
 }

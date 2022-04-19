@@ -1,4 +1,5 @@
 mixin PageKey {
-  static const loginPage = 'login_page';
-  static const registerPage = 'register_page';
+  static const splash = 'splash';
+  static const login = 'login';
+  static const register = 'register';
 }
