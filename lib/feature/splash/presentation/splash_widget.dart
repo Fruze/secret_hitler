@@ -4,6 +4,7 @@ import 'package:secret_hitler/feature/login/presentation/login_page.dart';
 import 'package:secret_hitler/feature/splash/presentation/splash_cubit.dart';
 import 'package:secret_hitler/feature/splash/presentation/splash_state.dart';
 import 'package:secret_hitler/navigation/navigation_service.dart';
+import 'package:secret_hitler/secret_hitler_app.dart';
 
 class SplashWidget extends StatelessWidget {
   const SplashWidget({Key? key}) : super(key: key);
@@ -21,8 +22,8 @@ class SplashWidget extends StatelessWidget {
               return Container(color: Colors.red);
             case SplashStateSuccess:
               // TODO: Stub
-              Future.delayed(const Duration(milliseconds: 300), () {
-                NAVSERVICE.push(const LoginPage());
+              Future.delayed(const Duration(milliseconds: 2000), () {
+                NAVCUBIT.push(const LoginPage());
               });
               return Container(color: Colors.blueGrey);
             default:
