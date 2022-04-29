@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:secret_hitler/common/style/style_normal_text.dart';
 
 class LoginWidget extends StatelessWidget {
   const LoginWidget({Key? key}) : super(key: key);
@@ -7,8 +8,14 @@ class LoginWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: const [
-        Text('Hi this is a Login Page'),
-        Text('Fill me up'),
+        Text(
+          'Hi this is a Login Page',
+          style: StyleNormalText(),
+        ),
+        Text(
+          'Fill me up',
+          style: StyleNormalText(),
+        ),
       ],
     );
   }
