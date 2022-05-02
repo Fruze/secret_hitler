@@ -1,0 +1,16 @@
+name: secret_hitler
+
+packages:
+  - '**'
+
+scripts:
+
+  flutter:pub-get:
+    run: flutter pub get
+    description: |
+      Pub get package in Flutter.
+
+  build_runner:build:
+    run: flutter pub run build_runner build --delete-conflicting-outputs
+    description: |
+      Use build_runner lib to build library and generate output.
