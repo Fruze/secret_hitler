@@ -10,6 +10,11 @@ scripts:
     description: |
       Pub get package in Flutter.
 
+  flutter:format:
+    run: find . -name "*.dart" -not -path "*/gen*" | xargs fvm flutter format --set-exit-if-changed
+    description: |
+      Format project with Flutter spec. Ignore */gen folder.
+
   build_runner:build:
     run: flutter pub run build_runner build --delete-conflicting-outputs
     description: |
