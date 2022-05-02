@@ -5,7 +5,7 @@ import 'package:secret_hitler/feature/splash/presentation/splash_widget.dart';
 class SplashPage extends MaterialPage {
   const SplashPage()
       : super(
-    child: const SplashWidget(),
-    key: const ValueKey(PageKey.splash),
-  );
+          child: const SplashWidget(),
+          key: const ValueKey(PageKey.splash),
+        );
 }

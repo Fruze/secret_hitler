@@ -9,13 +9,12 @@ class SecretHitlerApp extends StatefulWidget {
 }
 
 class _SecretHitlerAppState extends State<SecretHitlerApp> {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Secret Hitler',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const SplashWidget()
+      home: const SplashWidget(),
     );
   }
 }
