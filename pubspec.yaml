@@ -29,7 +29,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  # SH, Bloc for State Management.
   flutter_bloc: ^8.0.1
+  # SH, Our service locator.
+  get_it: ^7.2.0
+  # SH, Generate code inject.
+  injectable: ^1.5.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -45,6 +51,11 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
+
+  # SH, build helper
+  build_runner: ^1.7.0
+  # SH, Add the generator to your dev_dependencies
+  injectable_generator: ^1.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
