@@ -22,7 +22,7 @@ scripts:
 
   workflows:pre-build:
     run: |
-      find . -name "*.dart" -not -path "*/gen*" | xargs fvm flutter format --set-exit-if-changed &&
+      find . -name "*.dart" -not -path "*/gen*" | xargs flutter format --set-exit-if-changed &&
       flutter analyze
     description: |
       Trigger pre-build Github workflow on local. Used by CI, can also triggered manually on local.
