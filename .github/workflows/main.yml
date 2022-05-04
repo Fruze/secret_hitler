@@ -33,10 +33,30 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-#  - run: flutter build ios --release --no-codesign
+      - run: flutter build ios --release --no-codesign
 
-#  - run: flutter build apk
-#  - run: flutter build appbundle
+  build-ios:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - run: flutter build apk
+      - run: flutter build appbundle
 
 
-#  - run: flutter build web
+  build-web:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - run: flutter build web
