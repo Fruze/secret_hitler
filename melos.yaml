@@ -21,6 +21,6 @@ scripts:
       Pub get package in Flutter.
 
   workflows:pre-build:
-    run: flutter analyze && flutter test
+    run: melos run flutter:format && flutter analyze && flutter test
     description: |
       Trigger pre-build Github workflow on local. Used by CI, can also triggered manually on local.
