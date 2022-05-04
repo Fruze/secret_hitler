@@ -36,6 +36,7 @@ jobs:
     runs-on: macos-12
     needs: pre-build
     steps:
+      - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: ${{ env.flutter_version }}
@@ -52,6 +53,7 @@ jobs:
     needs: tests
 
     steps:
+      - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: ${{ env.flutter_version }}
@@ -71,6 +73,7 @@ jobs:
     needs: tests
 
     steps:
+      - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: ${{ env.flutter_version }}
@@ -89,6 +92,7 @@ jobs:
     needs: tests
 
     steps:
+      - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: ${{ env.flutter_version }}
