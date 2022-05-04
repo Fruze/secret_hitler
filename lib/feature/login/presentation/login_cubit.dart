@@ -11,10 +11,10 @@ class LoginCubit extends Cubit<LoginState> {
   final LoginUseCase useCase;
 
   void getNames() async {
-          useCase
-              .getNames()
-              .then((value) => emit(LoginStateSuccess(value)))
-              .catchError(onError);
+    useCase
+        .getNames()
+        .then((value) => emit(LoginStateSuccess(value)))
+        .catchError(onError);
   }
 
   @override
