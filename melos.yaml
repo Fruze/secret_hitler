@@ -5,17 +5,22 @@ packages:
 
 scripts:
 
-  flutter:pub-get:
-    run: flutter pub get
+  build_runner:build:
+    run: flutter pub run build_runner build --delete-conflicting-outputs
     description: |
-      Pub get package in Flutter.
+      Use build_runner lib to build library and generate output.
 
   flutter:format:
     run: find . -name "*.dart" -not -path "*/gen*" | xargs fvm flutter format --set-exit-if-changed
     description: |
       Format project with Flutter spec. Ignore */gen folder.
 
-  build_runner:build:
-    run: flutter pub run build_runner build --delete-conflicting-outputs
+  flutter:pub-get:
+    run: flutter pub get
     description: |
-      Use build_runner lib to build library and generate output.
+      Pub get package in Flutter.
+
+  workflows:pre-build:
+    run: flutter analyze && flutter test
+    description: |
+      Trigger pre-build Github workflow on local. Used by CI, can also triggered manually on local.

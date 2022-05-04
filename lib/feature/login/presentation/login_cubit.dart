@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:secret_hitler/feature/login/domain/login_usecase.dart';
@@ -10,15 +11,15 @@ class LoginCubit extends Cubit<LoginState> {
   final LoginUseCase useCase;
 
   void getNames() async {
-    useCase
-        .getNames()
-        .then((value) => emit(LoginStateSuccess(value)))
-        .catchError(onError);
+          useCase
+              .getNames()
+              .then((value) => emit(LoginStateSuccess(value)))
+              .catchError(onError);
   }
 
   @override
   void onError(Object error, StackTrace stackTrace) {
-    print(error.toString());
+    debugPrint(error.toString());
     super.onError(error, stackTrace);
   }
 }
