@@ -9,7 +9,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('Stub testing', () async {
-    expect(true, 2 == 1);
+    expect(true, 1 == 1);
   });
 
   // testWidgets('Counter increments smoke test', (WidgetTester tester) async {

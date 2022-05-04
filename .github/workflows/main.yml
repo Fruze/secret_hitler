@@ -44,7 +44,7 @@ jobs:
           cache-path: ${{ runner.tool_cache }}/flutter # optional, change this to specify the cache path
           architecture: x64 # optional, x64 or arm64
 
-      - name: Activate melos
+      - name: Run flutter test
         run: flutter test
 
   build-android:
@@ -52,8 +52,13 @@ jobs:
     needs: tests
 
     steps:
-      - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.flutter_version }}
+          cache: true
+          cache-key: flutter # optional, change this to force refresh cache
+          cache-path: ${{ runner.tool_cache }}/flutter # optional, change this to specify the cache path
+          architecture: x64 # optional, x64 or arm64
 
       - name: Install dependencies
         run: flutter pub get
@@ -66,8 +71,13 @@ jobs:
     needs: tests
 
     steps:
-      - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.flutter_version }}
+          cache: true
+          cache-key: flutter # optional, change this to force refresh cache
+          cache-path: ${{ runner.tool_cache }}/flutter # optional, change this to specify the cache path
+          architecture: x64 # optional, x64 or arm64
 
       - name: Install dependencies
         run: flutter pub get
@@ -79,8 +89,13 @@ jobs:
     needs: tests
 
     steps:
-      - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.flutter_version }}
+          cache: true
+          cache-key: flutter # optional, change this to force refresh cache
+          cache-path: ${{ runner.tool_cache }}/flutter # optional, change this to specify the cache path
+          architecture: x64 # optional, x64 or arm64
 
       - name: Install dependencies
         run: flutter pub get
