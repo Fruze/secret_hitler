@@ -30,3 +30,12 @@ jobs:
 
       - name: Run tests
         run: flutter test
+
+#          runs-on: macos-latest
+#  - run: flutter build ios --release --no-codesign
+
+#  - run: flutter build apk
+#  - run: flutter build appbundle
+
+
+#  - run: flutter build web
