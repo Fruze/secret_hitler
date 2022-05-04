@@ -68,6 +68,16 @@ jobs:
       - run: flutter build apk
       - run: flutter build appbundle
 
+      - uses: actions/upload-artifact@v3
+        with:
+          name: APK release
+          path: build/app/outputs/flutter-apk/app-release.apk
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: App Bundle release
+          path: build/app/outputs/bundle/release/app-release.aab
+
   build-ios:
     runs-on: macos-12
     needs: tests
@@ -86,6 +96,11 @@ jobs:
         run: flutter pub get
 
       - run: flutter build ios --release --no-codesign
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: IPA release
+          path: build/ios/iphoneos/Runner.app
 
   build-web:
     runs-on: macos-12
