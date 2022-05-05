@@ -44,7 +44,9 @@ class _LoginWidgetState extends State<LoginWidget> {
   Widget build(BuildContext context) {
     client = StompClient(
       config: StompConfig(
-        url: 'ws://stomp.herokuapp.com/returning',
+        url: 'wss://stompp.herokuapp.com/returning',
+      // config: StompConfig.SockJS(  --> Alternative
+        // url: 'https://stompp.herokuapp.com/returning',
         onConnect: onConnectCallback,
         beforeConnect: () async {
           print('hahaha before connect');
@@ -62,7 +64,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     );
 
     client?.activate();
-    client?.ack(id: 'asd');
+    // client?.ack(id: 'asd'); --> This causes the error
 
     return BlocProvider(
       create: (context) => getIt<LoginCubit>()..getNames(),
