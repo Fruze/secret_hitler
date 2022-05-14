@@ -24,14 +24,14 @@ class _LoginWidgetState extends State<LoginWidget> {
     print('hahaha in');
 
     client?.send(
-      destination: '/topic/messages',
+      destination: '/app/returning',
       body: '{"from":"","text":"andrea"}',
-      headers: {},
+      headers: {'user-id': 'user-id-value'},
     );
 
     client?.subscribe(
       destination: '/topic/messages/andrea',
-      headers: {},
+      headers: {'user-id': 'user-id-value'},
       callback: (frame) {
         // Received a frame for this subscription
         print('hahaha ads');
@@ -43,11 +43,12 @@ class _LoginWidgetState extends State<LoginWidget> {
   @override
   Widget build(BuildContext context) {
     client = StompClient(
-      config: StompConfig(
-        url: 'wss://stompp.herokuapp.com/returning',
-      // config: StompConfig.SockJS(  --> Alternative
-        // url: 'https://stompp.herokuapp.com/returning',
+      // config: StompConfig(
+      //   url: 'wss://stompp.herokuapp.com/entry',
+      config: StompConfig.SockJS(
+        url: 'https://stompp.herokuapp.com/entry',
         onConnect: onConnectCallback,
+        stompConnectHeaders: {'user-id': 'user-id-value'},
         beforeConnect: () async {
           print('hahaha before connect');
         },
