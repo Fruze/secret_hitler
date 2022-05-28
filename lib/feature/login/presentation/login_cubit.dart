@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:secret_hitler/feature/login/domain/login_usecase.dart';
@@ -18,7 +19,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   @override
   void onError(Object error, StackTrace stackTrace) {
-    print(error.toString());
+    debugPrint(error.toString());
     super.onError(error, stackTrace);
   }
 }

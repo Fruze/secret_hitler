@@ -1,0 +1,122 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Secret Hitler main action.
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  flutter_version: 2.10.3
+
+jobs:
+  pre-build:
+    runs-on: macos-12
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.flutter_version }}
+          cache: true
+          cache-key: flutter # optional, change this to force refresh cache
+          cache-path: ${{ runner.tool_cache }}/flutter # optional, change this to specify the cache path
+          architecture: x64 # optional, x64 or arm64
+
+      - name: Activate melos
+        run: dart pub global activate melos
+      - name: Run melos script for pre-build checks
+        run: melos run workflows:pre-build
+
+  tests:
+    runs-on: macos-12
+    needs: pre-build
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.flutter_version }}
+          cache: true
+          cache-key: flutter # optional, change this to force refresh cache
+          cache-path: ${{ runner.tool_cache }}/flutter # optional, change this to specify the cache path
+          architecture: x64 # optional, x64 or arm64
+
+      - name: Run flutter test
+        run: flutter test
+
+  build-android:
+    runs-on: macos-12
+    needs: tests
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.flutter_version }}
+          cache: true
+          cache-key: flutter # optional, change this to force refresh cache
+          cache-path: ${{ runner.tool_cache }}/flutter # optional, change this to specify the cache path
+          architecture: x64 # optional, x64 or arm64
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - run: flutter build apk
+      - run: flutter build appbundle
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: APK release
+          path: build/app/outputs/flutter-apk/app-release.apk
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: App Bundle release
+          path: build/app/outputs/bundle/release/app-release.aab
+
+  build-ios:
+    runs-on: macos-12
+    needs: tests
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.flutter_version }}
+          cache: true
+          cache-key: flutter # optional, change this to force refresh cache
+          cache-path: ${{ runner.tool_cache }}/flutter # optional, change this to specify the cache path
+          architecture: x64 # optional, x64 or arm64
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - run: flutter build ios --release --no-codesign
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: IPA release
+          path: build/ios/iphoneos/Runner.app
+
+  build-web:
+    runs-on: macos-12
+    needs: tests
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.flutter_version }}
+          cache: true
+          cache-key: flutter # optional, change this to force refresh cache
+          cache-path: ${{ runner.tool_cache }}/flutter # optional, change this to specify the cache path
+          architecture: x64 # optional, x64 or arm64
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - run: flutter build web
