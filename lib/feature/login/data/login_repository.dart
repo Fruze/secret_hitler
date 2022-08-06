@@ -14,6 +14,6 @@ class LoginRepositoryImpl implements LoginRepository {
 
   @override
   Future<LoginResponse> getNames() async {
-    return await networkService.getUsers();
+    return Future.error("");
   }
 }
