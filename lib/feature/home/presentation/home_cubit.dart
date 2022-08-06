@@ -11,7 +11,8 @@ class HomeCubit extends Cubit<HomeState> {
   final HomeUseCase useCase;
 
   void register(String name) async {
-    useCase.register(name)
+    useCase
+        .register(name)
         .then((value) => debugPrint(value.toString()))
         .catchError(onError);
   }
