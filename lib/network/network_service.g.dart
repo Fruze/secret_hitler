@@ -16,18 +16,19 @@ class _NetworkService implements NetworkService {
   String? baseUrl;
 
   @override
-  Future<LoginResponse> getUsers() async {
+  Future<PostUsersResponse> postUsers(request) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
+    _data.addAll(request.toJson());
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<LoginResponse>(
-            Options(method: 'GET', headers: _headers, extra: _extra)
+        _setStreamType<PostUsersResponse>(
+            Options(method: 'POST', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/users',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = LoginResponse.fromJson(_result.data!);
+    final value = PostUsersResponse.fromJson(_result.data!);
     return value;
   }
 

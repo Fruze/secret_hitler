@@ -1,5 +1,5 @@
 import 'package:injectable/injectable.dart';
-import 'package:secret_hitler/network/model/Post_users_response.dart';
+import 'package:secret_hitler/network/model/post_users_response.dart';
 import 'package:secret_hitler/network/model/post_users_request.dart';
 import 'package:secret_hitler/network/network_service.dart';
 
