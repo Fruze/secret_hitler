@@ -6,6 +6,6 @@ import 'package:secret_hitler/network/network_service.dart';
 abstract class NetworkModule {
   final networkService = NetworkService(
     Dio(),
-    baseUrl: 'https://gorest.co.in/public-api/',
+    baseUrl: 'https://stompp.herokuapp.com',
   );
 }
