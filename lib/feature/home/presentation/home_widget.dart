@@ -19,14 +19,24 @@ class HomeWidget extends StatelessWidget {
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text(
-              "Create game",
-              style: StyleNormalText(),
+          children: [
+            GestureDetector(
+              child: Container(
+                color: Colors.grey,
+                child: const Text(
+                  "Create game",
+                  style: StyleNormalText(),
+                ),
+              ),
             ),
-            Text(
-              "Join game",
-              style: StyleNormalText(),
+            GestureDetector(
+              child: Container(
+                color: Colors.grey,
+                child: const Text(
+                  "Join game",
+                  style: StyleNormalText(),
+                ),
+              ),
             )
           ],
         )
